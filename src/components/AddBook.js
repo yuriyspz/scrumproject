@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import * as actions from '../actions';
 
 class AddBook extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             "title": "",
-            "author":"",
-            "description":"",
+            "author": "",
+            "description": "",
             "published": 0
         }
     }
@@ -33,17 +33,15 @@ class AddBook extends React.Component {
                     Author: <input name="author" type="text" value={this.state.author} onChange={this.handleChange}/>
                     Description: <input name="description" type="text" value={this.state.description} onChange={this.handleChange}/>
                     Published: <input name="published" type="text" value={this.state.published} onChange={this.handleChange}/>
-                    <input type="submit" />
-                </form>                
+                    <input type="submit"/>
+                </form>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
