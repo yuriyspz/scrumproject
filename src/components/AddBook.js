@@ -1,45 +1,46 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import React, { Component, useState } from 'react';
+import {useDispatch} from 'react-redux';
 
 import * as actions from '../actions';
 
-class AddBook extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            "title": "",
-            "author":"",
-            "description":"",
-            "published": 0
-        }
-    }
+const AddBook = () => {
+    const [book, setBook] = useState({
+        "title": "",
+        "author":"",
+        "description":"",
+        "published": 0
+    });
 
-    handleChange = (e) => {
-        this.setState({
+    const dispatch = useDispatch();
+
+
+    const handleChange = (e) => {
+        setBook({
             [e.target.name]: e.target.value
         });
     }
 
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addBook(this.state);
+        //this.props.addBook(book);
+        dispatch(actions.createBook(book));
     }
 
-    render() {
+//    render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    Title: <input name="title" type="text" value={this.state.title} onChange={this.handleChange}/>
-                    Author: <input name="author" type="text" value={this.state.author} onChange={this.handleChange}/>
-                    Description: <input name="description" type="text" value={this.state.description} onChange={this.handleChange}/>
-                    Published: <input name="published" type="text" value={this.state.published} onChange={this.handleChange}/>
+                <form onSubmit={handleSubmit}>
+                    Title: <input name="title" type="text" value={book.title} onChange={handleChange}/>
+                    Author: <input name="author" type="text" value={book.author} onChange={handleChange}/>
+                    Description: <input name="description" type="text" value={book.description} onChange={handleChange}/>
+                    Published: <input name="published" type="text" value={book.published} onChange={handleChange}/>
                     <input type="submit" />
                 </form>                
             </div>
         )
-    }
+  //  }
 }
-
+/*
 const mapStateToProps = (state) => {
     return {
         
@@ -51,5 +52,6 @@ const mapDispatchToProps = (dispatch) => {
         addBook: (book) => dispatch(actions.createBook(book))
     }
 }
-
-export default connect(null, mapDispatchToProps)(AddBook)
+*/
+//export default connect(null, mapDispatchToProps)(AddBook)
+export default AddBook;
