@@ -3,18 +3,24 @@ import React, { useContext } from 'react';
 import { BookContext } from './BookContext';
 import { NavLink } from 'react-router-dom';
 
-const BookItem = ({book}) => {
+export const Full = (props) => {
     const theme = useContext(BookContext);
+    // const dispatch = useDispatch();
+    
+
+    // useEffect(() => {
+    //     dispatch(actions.getById())
+    // }, [])
+
     return (
         <div style={theme.dark}>
-            <NavLink to={`/full/${book.id}`}>{book.title}</NavLink>
-            <div>ID: {book.id}</div>
-            <div>Title: {book.title}</div>
-            {/* <div>Author: {book.author}</div>
+            <div>ID: {props.match.params.id}</div>
+            {/* <div>Title: {book.title}</div>
+            <div>Author: {book.author}</div>
             <div>Description: {book.description}</div>
             <div>Published: {book.published}</div> */}
         </div>
     )
 }
 
-export default BookItem
+export default Full
