@@ -10,7 +10,7 @@ const BooksList = () => {
 
     useEffect(() => {
         dispatch(actions.getAllBooks())
-    })
+    }, [])
 
     return (
         <>

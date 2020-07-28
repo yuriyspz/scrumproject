@@ -18,6 +18,8 @@ export const getAll = (booksList = []) => {
 export const getAllBooks = () => (dispatch) => {
     axios.get(`${url}`).then((response) => {
         dispatch(getAll(response.data))
+    }).catch((msg) => {
+        throw new Error(msg);
     })
 }
 
