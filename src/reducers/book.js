@@ -1,6 +1,6 @@
 export default function book(state = [], action) {
     if (action.type === "GET_ALL") {
-        return [...state, ...action.payload]
+        return [...action.payload]
     } else if (action.type === "ADD_BOOK") {
         return [...state,
             action.payload]

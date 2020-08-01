@@ -29,3 +29,41 @@ export const createBook = (book) => (dispatch) => {
         dispatch(addBook(response.data));
     })
 }
+
+export const addFullBook = (book) => {
+    return {
+        type: 'ONE_ADD_BOOK',
+        payload: book
+    }
+}
+
+export const getFullBook = (bookId) => {
+    return {
+        type: 'ONE_GET_BOOK',
+        id: bookId
+    }
+}
+
+export const getAsyncFullBook = (bookId) => (dispatch) => {
+    axios.get(`${url}/${bookId}`).then((response) => {
+        dispatch(addFullBook(response.data))
+    }).catch((msg) => {
+        throw new Error(msg);
+    })
+}
+/*
+export const updateFullBook = (book) => {
+    return {
+        type: 'ONE_UPDATE_BOOK',
+        id: book.id,
+        data: {...book}
+    }
+}
+
+export const deleteFullBook = (bookId) => {
+    return {
+        type: 'ONE_DELETE_BOOK',
+        id: bookId
+    }
+}
+*/
