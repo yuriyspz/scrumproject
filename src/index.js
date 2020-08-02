@@ -7,10 +7,13 @@ import {createStore, combineReducers, applyMiddleware} from "redux";
 import reducers from './reducers'
 import {Provider} from 'react-redux';
 import thunk from "redux-thunk";
+import createSagaMiddleware from 'redux-saga';
 import {composeWithDevTools} from 'redux-devtools-extension';
+import rootSaga from './saga/bookSaga';
+const sagaMiddleware = createSagaMiddleware();
 
-
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <Provider store={store}>
       <App/>

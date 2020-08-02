@@ -33,7 +33,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getBooks: () => dispatch(getAllBooks())
+        getBooks: () => dispatch({
+            type: 'GET_ALLBOOKS_ACTION'
+        })
     }
 }
 

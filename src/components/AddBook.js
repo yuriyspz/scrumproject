@@ -46,7 +46,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addBook: (book) => dispatch(actions.createBook(book))
+        addBook: (book) => {
+            dispatch({
+                type: 'CREATE_BOOK_ACTION',
+                payload: book
+            })
+        }
     }
 }
 
